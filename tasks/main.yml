@@ -1,0 +1,30 @@
+---
+# tasks file for dotfiles
+
+- name: confdir for yamllint settings
+  file:
+    path: "{{ dotfiles_home }}/.config/yamllint"
+    state: directory
+
+- name: yamllint settings
+  copy:
+    dest: "{{ dotfiles_home }}/.config/yamllint/config"
+    content: |
+      ---
+      extends: default
+
+      rules:
+        indentation:
+          spaces: 2
+          indent-sequences: no
+        line-length:
+          max: 80
+          level: warning
+        truthy: disable
+
+- name: vim settings
+  copy:
+    dest: "{{ dotfiles_home }}/.vimrc"
+    content: |
+     " tab is two spaces for yaml
+     set shiftwidth=2
