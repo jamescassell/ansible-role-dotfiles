@@ -1,0 +1,6 @@
+---
+- name: configure user preferences
+  hosts: localhost
+  become: no
+  roles:
+  - "{{ playbook_dir }}"
